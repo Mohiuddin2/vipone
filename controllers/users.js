@@ -12,7 +12,7 @@ module.exports.renderRegister = (req, res) => {
       const newUser = await User.register(user, password);
       req.login(newUser, err => { // for login after register
         if(err) return next(err);
-        req.flash('success', 'Welcome Yelpcamp')
+        req.flash('success', 'Welcome Viplevel')
         res.redirect('http://viplevel.one/');
       })
     } catch (e) {
