@@ -9,8 +9,7 @@ const ejsMate = require("ejs-mate");
 const session = require("express-session");
 const flash = require("connect-flash");
 const ExpressError = require("./utility/ExpressError");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
+
 const User = require("./models/user");
 // const helmet = require("helmet");
 
@@ -86,14 +85,6 @@ app.use(flash());
 // app.use(helmet());
 
 
-
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-
-passport.serializeUser(User.serializeUser()); // for how do we store user in the session
-passport.deserializeUser(User.deserializeUser()); // for removing user form session
-
 app.use((req, res, next) => {
   res.locals.currentUser = req.user; // this for session logged in or for
   res.locals.success = req.flash("success");
@@ -103,10 +94,8 @@ app.use((req, res, next) => {
 
 app.use("/", userRoutes);
 
-
-
 app.get("/", (req, res) => {
-  res.render("register");
+  res.render("login");
 });
 
 // This is mystry I need add this on project
@@ -121,8 +110,8 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
-const port = process.env.PORT || 5000;
-// const port = 5000;
+// const port = process.env.PORT || 5000;
+const port = 5000;
 
 
 app.listen(port, () => {
