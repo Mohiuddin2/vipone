@@ -7,7 +7,7 @@
                     <img src="/BG2.jpg"
                         alt="" class="card-img-top" />
                     <div class="card-body">
-                        <h5 class="card-title">Regsiter</h5>
+                        <h5 class="card-title mt-0 pt-0">Regsiter</h5>
                         <form action="/register" method="POST">
                             <div>
                                 <label for="username" class="form-label">Username</label>
@@ -21,10 +21,34 @@
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" name="password" id="password" required>
                             </div>
-                            <button type="submit" class="btn btn-info btn-block">Register</button>
+                            <!-- Check box -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="myCheck1" checked required>
+                                <label class="form-check-label" for="myCheck1">
+                                  I do accept terms & conditions.
+                                </label>
+                              </div>
+
+                            <button type="submit" onclick="checkCheckbox()" class="btn btn-info btn-block" >Register</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<!--     
+<script>  
+    function checkCheckbox() {  
+      var yes = document.getElementById("myCheck1");  
+  
+      if (yes.checked == true){  
+        console.log("Yesssssssssss")
+    } else {
+       document.querySelector('button').disabled = true;
+       
+          console.log("nooooo")
+
+      } 
+      
+    }  
+    </script>   -->
